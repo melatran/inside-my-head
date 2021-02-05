@@ -1,1 +1,3 @@
-Sample project demonstrating how to integrate Sidekiq and Redis into an existing Rails project, as described in [How To Add Sidekiq and Redis to a Ruby on Rails Application](https://www.digitalocean.com/community/tutorials/how-to-add-sidekiq-and-redis-to-a-ruby-on-rails-application)
+# Inside My Head
+
+<img width="1367" alt="Screen Shot 2021-02-04 at 11 27 03 AM" src="https://user-images.githubusercontent.com/59414750/106938225-f63d1000-66db-11eb-9567-eeeda4e8f30c.png">
