@@ -15,6 +15,17 @@ ActiveRecord::Schema.define(version: 2019_11_20_132043) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "categories", id: false, force: :cascade do |t|
+    t.serial "id", null: false
+    t.text "name"
+  end
+
+  create_table "classes", id: false, force: :cascade do |t|
+    t.serial "id", null: false
+    t.text "name"
+    t.integer "teacher_id"
+  end
+
   create_table "endangereds", force: :cascade do |t|
     t.string "name"
     t.string "iucn"
@@ -22,12 +33,36 @@ ActiveRecord::Schema.define(version: 2019_11_20_132043) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "enrollments", id: false, force: :cascade do |t|
+    t.serial "id", null: false
+    t.integer "student_id"
+    t.integer "class_id"
+    t.integer "grade"
+  end
+
+  create_table "item_categories", id: false, force: :cascade do |t|
+    t.integer "item_id"
+    t.integer "category_id"
+  end
+
+  create_table "items", id: false, force: :cascade do |t|
+    t.serial "id", null: false
+    t.text "name"
+    t.integer "revenue"
+    t.integer "season_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.text "body"
-    t.integer "shark_id"
+    t.bigint "shark_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["shark_id"], name: "index_posts_on_shark_id"
+  end
+
+  create_table "seasons", id: false, force: :cascade do |t|
+    t.serial "id", null: false
+    t.text "name"
   end
 
   create_table "sharks", force: :cascade do |t|
@@ -37,4 +72,16 @@ ActiveRecord::Schema.define(version: 2019_11_20_132043) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "students", id: false, force: :cascade do |t|
+    t.serial "id", null: false
+    t.text "name"
+  end
+
+  create_table "teachers", id: false, force: :cascade do |t|
+    t.serial "id", null: false
+    t.text "name"
+    t.integer "room_number"
+  end
+
+  add_foreign_key "posts", "sharks"
 end

@@ -1,12 +1,8 @@
 Rails.application.routes.draw do
-  get 'endangered/index'
-  get 'endangered/data', to: 'endangered#data'
-  post 'endangered/upload', to: 'endangered#upload'
-  post 'endangered/destroy', to: 'endangered#destroy'
-  get 'home/index'
-  resources :sharks do
-	  resources :posts
-  end
-  root 'home#index'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root to: "home#index"
+  get "/about", to: "about#index"
+  get "/dear_no_one", to: "dear_no_one#new"
+  resources :blogs
 end
+
